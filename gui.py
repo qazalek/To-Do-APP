@@ -7,7 +7,8 @@ Sg.theme("Green")
 clock=Sg.Text('',key='clock')
 label=Sg.Text("Type in a to-do")
 input_box=Sg.InputText(tooltip="Enter todo", key="todo")
-add_button= Sg.Button("Add")
+add_button= Sg.Button(size=2, image_source="add.png", mouseover_colors="White",
+                      tooltip="Add todo", key="Add")
 list_box=Sg.Listbox(values=functions.get_todos(), key='todos',
                     enable_events=True, size=[45, 10])
 edit_button=Sg.Button("Edit")
@@ -29,6 +30,7 @@ while True:
             new_todo=values['todo']+ "\n"
             todos.append(new_todo)
             functions.write_todos(todos)
+            window['todos'].update(values=todos)
         case "Edit":
             try:
                 todo_to_edit= values['todos'][0]
