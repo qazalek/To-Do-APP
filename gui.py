@@ -17,12 +17,14 @@ while True:
     print(1,event)
     print(2,values)
     print(3,values['todos'])
+  
     match event:
         case "Add":
             todos=functions.get_todos()
             new_todo=values['todo']+ "\n"
             todos.append(new_todo)
             functions.write_todos(todos)
+          
         case "Edit":
             todo_to_edit= values['todos'][0]
             new_todo=values['todo']
@@ -32,6 +34,18 @@ while True:
             todos[index]=new_todo
             functions.write_todos(todos)
             window['todos'].update(values=todos)
+          
+        case "Complete":
+            todo_to_complete = values['todos'][0]
+            todos = functions.get_todos()
+            todos.remove(todo_to_complete)
+            functions.write_todos(todos)
+            window['todos'].update(values=todos)
+            window['todo'].update(value='')
+          
+        case "Exit":
+            break
+          
         case'todos':
             window['todo'].update(value=values['todos'][0])
         case Sg.WIN_CLOSED:
