@@ -1,7 +1,3 @@
-clean
 watching tv
 close
-driving
-study
-wash cloth
-play
+call
